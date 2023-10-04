@@ -1,17 +1,16 @@
 class Solution {
 public:
     int arraySign(vector<int>& nums) {
-        int n=nums.size();
-        int i=1,Product=0;
-
+        int n=nums.size(),i;
         if(nums[0]>0)
-        Product=1;
+        nums[0]=1;
         else if(nums[0]<0)
-        Product=-1;
+        nums[0]=-1;
+        else nums[0]=0;
 
-        for(int i=1; i<n; i++)
+        for(i=1; i<n; i++)
         {
-            if(nums[i]==0 || Product==0)
+            if(nums[0]==0 || nums[i]==0)
             {
                 return 0;
             }
@@ -20,8 +19,8 @@ public:
             nums[i]=-1;
             else nums[i]=1;
 
-            Product*=nums[i];
+            nums[0]*=nums[i];
         }
-        return Product;
+        return nums[0];
     }
 };
